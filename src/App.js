@@ -1,25 +1,54 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Numbers from "./components/Numbers"
+
+let prev = '0';
+
 class App extends Component {
+
+  state = {
+    inputVal: '',
+    arr: []
+  }
+
+  setDigits = (c) => {
+    let newArr = [];
+    for (let i = 0; i < c; i++) {
+      newArr.push(parseInt(Math.random() * 10))
+    }
+    this.setState({
+      arr: newArr
+    })
+  }
+
+  handleChange = () => {
+    this.setDigits(parseInt(this.state.inputVal))
+  }
+
+  handleInputChange = (e) => {
+    prev = e.target.value;
+    this.setState({
+      inputVal: ''
+    }, this.handleTwice)
+  }
+
+  handleTwice = () => {
+    this.setState({
+      inputVal: prev
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <div className="wrapper">
+          <div>请输入数字位数</div>
+          <input type="text" className="form-control" placeholder="number" onChange={this.handleInputChange}/>
+          <button className="btn" onClick={this.handleChange}>换一个</button>
+        </div>
+
+        <Numbers arr={this.state.arr}/>
       </div>
     );
   }
