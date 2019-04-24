@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import Numbers from "./components/Numbers"
-
-let prev = '0';
+import './App.css';
 
 class App extends Component {
 
@@ -14,12 +11,28 @@ class App extends Component {
 
   setDigits = (c) => {
     let newArr = [];
-    for (let i = 0; i < c; i++) {
-      newArr.push(parseInt(Math.random() * 10))
-    }
     this.setState({
-      arr: newArr
+      arr: []
+    }, () => {
+      for (let i = 0; i < c; i++) {
+        newArr.push(parseInt(Math.random() * 10))
+      }
+      this.setState({
+        arr: newArr
+      })
+      console.log("更换成功")
     })
+
+    // setTimeout(()=>{
+    //   for (let i = 0; i < c; i++) {
+    //     newArr.push(parseInt(Math.random() * 10))
+    //   }
+    //   this.setState({
+    //     arr: newArr
+    //   })
+    //   console.log("set time")
+    // },50)
+
   }
 
   handleChange = () => {
@@ -27,16 +40,15 @@ class App extends Component {
   }
 
   handleInputChange = (e) => {
-    prev = e.target.value;
+    let prev = e.target.value;
     this.setState({
-      inputVal: ''
-    }, this.handleTwice)
-  }
-
-  handleTwice = () => {
-    this.setState({
-      inputVal: prev
-    })
+        inputVal: ''
+      }, () => {
+        this.setState({
+          inputVal: prev
+        })
+      }
+    )
   }
 
   render() {
