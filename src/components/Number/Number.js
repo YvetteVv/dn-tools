@@ -5,7 +5,7 @@ import './Number.css'
 export default class Number extends Component {
 	render() {
 		return (
-			<div className="num-container">
+			<div className="num-oneitem">
 				<Text num={this.props.num} />
 			</div>
 		)

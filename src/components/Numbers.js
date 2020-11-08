@@ -6,7 +6,6 @@ import './Numbers.css'
 export default class Numbers extends Component {
 	render() {
 		let arr = this.props.arr;
-		console.log(arr)
 		return (
 			<div className="container-flex">
 				{arr.map((item, i) => {

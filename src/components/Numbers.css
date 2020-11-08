@@ -1,6 +1,6 @@
 .num-container {
-	width: 100px;
-	height: 180px;
-	border: #000 2px solid;
-	margin: auto 2px;
+	width: auto;
+	display: flex;
+	flex: 1;
+	flex-wrap:wrap;
 }

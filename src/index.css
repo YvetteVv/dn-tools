@@ -1,0 +1,30 @@
+body{
+    background-color: #e3f2fd;
+}
+
+.cell-wall {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+/*
+  MOBILE
+
+  device: < 480px
+*/
+@media screen and (max-width: 480px) {
+    .cell-membrane {
+        flex-basis: 90vw;
+    }
+}
+
+/*
+  DESKTOP
+
+  device: > 480px
+*/
+@media screen and (min-width: 480px) {
+    .cell-membrane {
+        flex-basis: 83.125vw;
+    }
+}
